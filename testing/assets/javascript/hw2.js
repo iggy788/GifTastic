@@ -49,15 +49,9 @@ $('document').ready(function() {
 
             // Adding the button to the HTML
             $('#players-view').append(a);
-
-            // Will add the below to the HTML
-            // <button class="player" data-name="Wilt Chamberlain" style="color: green; background-color: black; font-size: 25px;">Wilt Chamberlain</button>
-
-            // Need to Add
-            // data-state="still"
         }
     }
-
+    /* ADDING PLAYER BUTTONS WHEN NEW ONES ARE ENTERED IN TEXT BOX */
     // This function handles events where one button is clicked
     $('#add-player').on('click', function(event) {
         // event.preventDefault() prevents the form from trying to submit itself.
@@ -73,10 +67,12 @@ $('document').ready(function() {
 
         // calling renderButtons which handles the processing of our player array
         renderButtons();
+
     });
 
+    /* ADDING PLAYER BUTTONS WHEN NEW ONES ARE ENTERED IN TEXT BOX */
     renderButtons();
-    // This function handles events where a movie button is clicked
+    // This function handles events when the Add Player button is clicked
     $('#add-player').on('click', function(event) {
         event.preventDefault();
         // This line grabs the input from the textbox
@@ -87,10 +83,13 @@ $('document').ready(function() {
         // Adding a player from the textbox to our array
         players.push(newPlayer);
 
+        // (this is necessary otherwise we will have repeat buttons)
+        $('#players-view').empty();
         // Calling renderButtons which handles the processing of our players array
         //renderButtons();
     });
 
+    /* AJAX REQUEST TO GET GIFS OF PEOPLE WHEN BUTTONS ARE CLICKED */
     // This function handles events where one button is clicked
     function displayGreatestPlayers() {
         var person = $(this).attr('data-name');
@@ -110,21 +109,11 @@ $('document').ready(function() {
                 var p = $('<p>').text('Rating: ' + rating);
 
                 var personImage = $('<img>');
-                personImage.attr('src', results[i].images.fixed_height.url);
-                personImage.attr('data-still', results[i].images.fixed_height.url);
+                personImage.attr('src', results[i].images.fixed_height_still.url);
+                personImage.attr('data-still', results[i].images.fixed_height_still.url);
                 personImage.attr('data-animate', results[i].images.fixed_height.url);
-
-                var state = $(this).attr('data-state');
-                // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-                // Then, set the image's data-state to animate
-                // Else set src to the data-still value
-                if (state === 'still') {
-                    $(this).attr('src', $(this).attr('data-animate'));
-                    $(this).attr('data-state', 'animate');
-                } else {
-                    $(this).attr('src', $(this).attr('data-still'));
-                    $(this).attr('data-state', 'still');
-                }
+                personImage.attr('data-state', "still");
+                personImage.addClass('gif');
 
                 gifDiv.prepend(p);
                 gifDiv.prepend(personImage);
@@ -132,6 +121,32 @@ $('document').ready(function() {
                 $('#gifs-appear-here').prepend(gifDiv);
             }
         });
+
+        /* PAUSING AND UNPAUSING GIFS */
+        $('.gif').on('click', function() {
+            alert("You've Clicked");
+            // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+            var state = $(this).attr('data-state');
+
+            // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+            // Then, set the image's data-state to animate
+            // Else set src to the data-still value
+            if (state === 'still') {
+                $(this).attr('src', $(this).attr('data-animate'));
+                $(this).attr('data-state', 'animate');
+            } else {
+                $(this).attr('src', $(this).attr('data-still'));
+                $(this).attr('data-state', 'still');
+            }
+        });
+
     };
     $(document).on('click', 'button', displayGreatestPlayers);
+
+    $('.gif').click(function() {
+        alert('clicked');
+    });
+
+
+
 });
