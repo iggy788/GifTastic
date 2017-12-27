@@ -5,40 +5,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>GifTastic HW</title>
+
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
     <!-- Link to CSS stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css" media="screen">
+
+    <title>GifTastic HW</title>
 </head>
+<!--==========================End of Head============================-->
 
 <body>
+    <!-- Creates the Overall Grid -->
     <div class="container">
+        <!-- First Row -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well jumbotron">
+                    <h1 class="text-center">Mike's Top Ten Greatest Basketball Players of All Time</h1>
+                    <h3>Index 2</h3>
+                </div>
+                <!-- JUMBOTRON -->
+            </div>
+            <!-- col-md-12 -->
 
-        <h1>Mike's Top Ten Greatest Basketball Players of All Time</h1>
-        <h3>Index 2</h3>
+            <!--==========================PLAYERS LIST============================-->
+            <!-- Movies will get dumped here -->
+            <div class="row">
+                <div class="col-md-7">
+                    <div id="players-view"></div>
+                </div>
 
-        <!-- Movies will get dumped here -->
-        <div id="players-view"></div>
 
-        <form id="player-form">
-            <label for="player-input">Add Your Favorite Player to the List</label>
-            <input type="text" id="player-input"><br>
+                <!--==========================SIDEBAR============================-->
 
-            <!-- Button triggers new movie to be added -->
-            <input id="add-player" type="submit" value="Add Your Favorite Player to the list">
-        </form>
+                <div class="col-md-4">
+                    <form id="player-form">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <label for="player-input">Add Your Favorite Player to the List</label>
+                            </div>
+                            <div class="panel-body">
+                                <input type="text" id="player-input"><br>
+                                <!-- Button triggers new movie to be added -->
+                                <input id="add-player" type="submit" value="Add Your Favorite Player to the list">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- SECOND ROW  -->
 
-        <div id="gifs-appear-here">
+
+
+            <!--==========================WHERE TO PUT GIFS============================-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="gifs-appear-here">
+                    </div>
+                </div>
+            </div>
+
+            <!--==========================External Javascript============================-->
+            <!-- Link to jQuery -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+            <!-- Added link to external javascript -->
+            <script type="text/javascript" src="assets/javascript/hw2.js "></script>
+
+            <!--==========================End of Overall Grid============================-->
         </div>
-
-        <!-- Link to jQuery -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-        <!-- Added link to external javascript -->
-        <script type="text/javascript" src="assets/javascript/hw2.js "></script>
-
-
+        <!-- FIRST ROW  -->
     </div>
-
+    <!-- FIRST CONTAINER -->
 </body>
 
 </html>

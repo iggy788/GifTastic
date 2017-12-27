@@ -4,3 +4,10 @@
     input {
         margin: 10px;
     }
+    
+    .sidebar {
+        padding-bottom: 20px;
+        margin-bottom: 15px;
+        line-height: 22px;
+        border-bottom: 2px solid #eee;
+    }
