@@ -1,6 +1,28 @@
-$('document').ready(function() {
+/*
+My API Key: SrsCEPVeiqgySRa6p1rVSatJAA8qOBGD
+q: string
+    • Search query term or prhase.
+limit: integer (int32)
+    • The maximum number of records to return. (Default: 25 & Maximum is 100)
+rating: string
+    • Filters results by specified rating.
+Example queryURL ='https://api.giphy.com/v1/gifs/search?q=michael+jordan&api_key=SrsCEPVeiqgySRa6p1rVSatJAA8qOBGD&limit=10';
 
-    var players = ['Michael Jordan', 'Magic Johnson', 'LeBron James', 'Larry Bird', 'Kobe Bryant', 'Kareem Abdul-Jabbar', 'Wilt Chamberlain', 'Bill Russell', "Shaquille O'Neal", 'Oscar Robertson'];
+*/
+
+$('document').ready(function() {
+    var players = [
+        'Michael Jordan',
+        'Ervin Magic Johnson',
+        'LeBron James',
+        'Larry Bird',
+        'Kobe Bryant',
+        'Kareem Abdul Jabbar',
+        'Wilt Chamberlain',
+        'Bill Russell',
+        "Shaquille O'Neal",
+        'Oscar Robertson',
+    ];
 
     // Function for displaying players
     function renderButtons() {
@@ -20,11 +42,10 @@ $('document').ready(function() {
 
             // Providing the button's text with a value of the movie at index i
             a
-                .text((i + 1) + '. ' + players[i])
+                .text(i + 1 + '. ' + players[i])
                 .css('color', 'green')
                 .css('background-color', 'black')
                 .css('font-size', '25px');
-
 
             // Adding the button to the HTML
             $('#players-view').append(a);
@@ -32,7 +53,7 @@ $('document').ready(function() {
             // Will add the below to the HTML
             // <button class="player" data-name="Wilt Chamberlain" style="color: green; background-color: black; font-size: 25px;">Wilt Chamberlain</button>
 
-            // Need to Add 
+            // Need to Add
             // data-state="still"
         }
     }
@@ -69,16 +90,14 @@ $('document').ready(function() {
         // Calling renderButtons which handles the processing of our players array
         //renderButtons();
     });
-    // Adding a click event listener to all elements with a class of "movie"
-    //$(document).on("click", ".movie", displayMovieInfo);
-
-    // Calling the renderButtons function to display the intial buttons
-    //renderButtons();
 
     // This function handles events where one button is clicked
-    $('button').on('click', function() {
+    function displayGreatestPlayers() {
         var person = $(this).attr('data-name');
-        var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + person + '&api_key=SrsCEPVeiqgySRa6p1rVSatJAA8qOBGD&limit=10';
+        var queryURL =
+            'https://api.giphy.com/v1/gifs/search?q=' +
+            person +
+            '&api_key=SrsCEPVeiqgySRa6p1rVSatJAA8qOBGD&limit=10';
 
         $.ajax({ url: queryURL, method: 'GET' }).done(function(response) {
             var results = response.data;
@@ -92,7 +111,20 @@ $('document').ready(function() {
 
                 var personImage = $('<img>');
                 personImage.attr('src', results[i].images.fixed_height.url);
-                //personImage.attr('data-state', 'still');
+                personImage.attr('data-still', results[i].images.fixed_height.url);
+                personImage.attr('data-animate', results[i].images.fixed_height.url);
+
+                var state = $(this).attr('data-state');
+                // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+                // Then, set the image's data-state to animate
+                // Else set src to the data-still value
+                if (state === 'still') {
+                    $(this).attr('src', $(this).attr('data-animate'));
+                    $(this).attr('data-state', 'animate');
+                } else {
+                    $(this).attr('src', $(this).attr('data-still'));
+                    $(this).attr('data-state', 'still');
+                }
 
                 gifDiv.prepend(p);
                 gifDiv.prepend(personImage);
@@ -100,5 +132,6 @@ $('document').ready(function() {
                 $('#gifs-appear-here').prepend(gifDiv);
             }
         });
-    });
+    };
+    $(document).on('click', 'button', displayGreatestPlayers);
 });
