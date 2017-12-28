@@ -108,45 +108,49 @@ $('document').ready(function() {
 
                 var p = $('<p>').text('Rating: ' + rating);
 
-                var personImage = $('<img>');
+                var personImage = $('<img>').addClass('gif');
                 personImage.attr('src', results[i].images.fixed_height_still.url);
                 personImage.attr('data-still', results[i].images.fixed_height_still.url);
                 personImage.attr('data-animate', results[i].images.fixed_height.url);
-                personImage.attr('data-state', "still");
-                personImage.addClass('gif');
+                //personImage.attr('data-state', "still");
+                //personImage.addClass('gif');
 
                 gifDiv.prepend(p);
                 gifDiv.prepend(personImage);
 
                 $('#gifs-appear-here').prepend(gifDiv);
             }
-        });
 
-        /* PAUSING AND UNPAUSING GIFS */
-        $('.gif').on('click', function() {
-            alert("You've Clicked");
-            // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
-            var state = $(this).attr('data-state');
+            /* PAUSING AND UNPAUSING GIFS */
+            $('.gif').on('click', function() {
+                //$('#gifs-appear-here').on('click', function() {
+                alert("You've Clicked a Gif");
+                // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+                var state = $(personImage).attr('data-state');
+                console.log(state);
 
-            // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-            // Then, set the image's data-state to animate
-            // Else set src to the data-still value
-            if (state === 'still') {
-                $(this).attr('src', $(this).attr('data-animate'));
-                $(this).attr('data-state', 'animate');
-            } else {
-                $(this).attr('src', $(this).attr('data-still'));
-                $(this).attr('data-state', 'still');
-            }
+                // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+                // Then, set the image's data-state to animate
+                // Else set src to the data-still value
+                if (state === 'still') {
+                    $(this).attr('src', $(this).attr('data-animate'));
+                    $(this).attr('data-state', 'animate');
+                } else {
+                    $(this).attr('src', $(this).attr('data-still'));
+                    $(this).attr('data-state', 'still');
+                }
+                /*if (state === 'still') {
+                  $(personImage).attr('src', $(personImage).attr('data-animate'));
+                  $(personImage).attr('data-state', 'animate');
+                } else {
+                  $(personImage).attr('src', $(personImage).attr('data-still'));
+                  $(personImage).attr('data-state', 'still');
+                }*/
+            });
+
         });
 
     };
     $(document).on('click', 'button', displayGreatestPlayers);
-
-    $('.gif').click(function() {
-        alert('clicked');
-    });
-
-
 
 });
