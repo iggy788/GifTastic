@@ -84,7 +84,7 @@ $('document').ready(function() {
         players.push(newPlayer);
 
         // (this is necessary otherwise we will have repeat buttons)
-        $('#players-view').empty();
+        //$('#players-view').empty();
         // Calling renderButtons which handles the processing of our players array
         //renderButtons();
     });
@@ -106,7 +106,10 @@ $('document').ready(function() {
 
                 var rating = results[i].rating;
 
-                var p = $('<p>').text('Rating: ' + rating);
+                var title = results[i].title;
+
+                var p = $('<p>').text('GIF Title: ' + title + ' & Rating: ' + rating);
+                p.css('font-size', '25px');
 
                 var personImage = $('<img>').addClass('gif');
                 personImage.attr('src', results[i].images.fixed_height_still.url);

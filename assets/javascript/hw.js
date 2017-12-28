@@ -69,7 +69,7 @@ $('document').ready(function() {
         players.push(newPlayer);
 
 
-        $('#players-view').empty();
+        //$('#players-view').empty();
 
     });
 
@@ -90,7 +90,10 @@ $('document').ready(function() {
 
                 var rating = results[i].rating;
 
-                var p = $('<p>').text('Rating: ' + rating);
+                var title = results[i].title;
+
+                var p = $('<p>').text('GIF Title: ' + title + ' & Rating: ' + rating);
+                p.css('font-size', '25px');
 
                 var personImage = $('<img>').addClass('gif');
                 personImage.attr('src', results[i].images.fixed_height_still.url);
