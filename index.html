@@ -2,113 +2,80 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>Quoth the Giphy</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Link to CSS stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css" media="screen">
+
+    <title>GifTastic HW 6</title>
 </head>
+<!--==========================End of Head============================-->
 
 <body>
-    <div id="buttons">
-        <button data-person="michael jordan">
-      1. Michael Jordan
-    </button>
-        <button data-person="Erivin Magic Johnson">
-      2. Magic Johnson
-    </button>
+    <!-- Creates the Overall Grid -->
+    <div class="container">
+        <!-- First Row -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well jumbotron">
+                    <h1 class="text-center">Mike's Top Ten Greatest Basketball Players of All Time</h1>
+                </div>
+                <!-- JUMBOTRON -->
+            </div>
+            <!-- col-md-12 -->
 
-        <!-- STEP ONE: Open this file in the browser and click on the buttons. Watch what happens -->
-
-        <!-- STEP TWO: between the dashed lines below
-            * add three more buttons
-            * add a data-person attribute of famous people you know
-            
-            * with a quote said by them -->
-
-        <!-- data-person is custom data
-        var person = $(this).attr("data-person");
-      -->
-        <button data-person="LeBron James">
-      3. LeBron James
-    </button>
-
-        <button data-person="Larry Bird">
-      4. Larry Bird
-    </button>
-
-        <button data-person="Kobe Bryant">
-      5. Kobe Bryant
-    </button>
-
-        <button data-person="Kareem Abdul-Jabbar">
-      6. Kareem Abdul-Jabbar
-    </button>
-
-        <button data-person="Wilt Chamberlain">
-      7. Wilt Chamberlain
-    </button>
-
-        <button data-person="Bill Russell">
-      8. Bill Russell
-    </button>
-
-        <button data-person="Shaquille O'Neal">
-      9. Shaquille O'Neal
-    </button>
-
-        <button data-person="Oscar Robertson">
-      10. Oscar Robertson
-    </button>
-        <!-- **************************************** -->
-
-        <!-- YOUR BUTTONS GO HERE!!!!!! Obviously delete this text after you put them between the dashed lines here.  -->
-
-        <!-- **************************************** -->
+            <!--==========================PLAYERS LIST============================-->
+            <!-- Movies will get dumped here -->
+            <div class="row">
+                <div class="col-md-7">
+                    <div id="players-view"></div>
+                </div>
 
 
-        <!-- STEP THREE: open this file in the browser and click on your buttons. If they don't work, then fix your buttons -->
+                <!--==========================SIDEBAR============================-->
 
-        <!-- STEP FOUR: go over the JavaScript with your partners, and explain the lines of code to each other. -->
+                <div class="col-md-4">
+                    <form id="player-form">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <label for="player-input">Add Your Favorite Player to the List</label>
+                            </div>
+                            <div class="panel-body">
+                                <input type="text" id="player-input"><br>
+                                <!-- Button triggers new movie to be added -->
+                                <input id="add-player" type="submit" value="Add Your Favorite Player to the list">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- SECOND ROW  -->
 
+            <!--==========================WHERE TO PUT GIFS============================-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="gifs-appear-here">
+                    </div>
+                </div>
+            </div>
+
+            <!--==========================External Javascript============================-->
+            <!-- Link to jQuery -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+            <!-- Added link to external javascript -->
+            <script type="text/javascript" src="assets/javascript/hw.js "></script>
+
+            <!--==========================End of Overall Grid============================-->
+        </div>
+        <!-- FIRST ROW  -->
     </div>
-
-    <div id="gifs-appear-here">
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript">
-        $("button").on("click", function() {
-            var person = $(this).attr("data-person");
-            var state = $(this).attr("data-state");
-            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-                person + "&api_key=SrsCEPVeiqgySRa6p1rVSatJAA8qOBGD&limit=10";
-
-            $.ajax({
-                    url: queryURL,
-                    method: "GET"
-                })
-                // Sucess Function that will give me my data
-
-            .done(function(response) {
-                //console.log(done, response);
-                var results = response.data;
-                //$.each(response, function(i, player){});
-                for (var i = 0; i < results.length; i++) {
-                    var gifDiv = $("<div class='item'>");
-
-                    var rating = results[i].rating;
-
-                    var p = $("<p>").text("Rating: " + rating);
-
-                    var personImage = $("<img>");
-                    personImage.attr("src", results[i].images.fixed_height.url);
-
-                    gifDiv.prepend(p);
-                    gifDiv.prepend(personImage);
-
-                    $("#gifs-appear-here").prepend(gifDiv);
-                }
-            });
-        });
-    </script>
+    <!-- FIRST CONTAINER -->
 </body>
 
 </html>

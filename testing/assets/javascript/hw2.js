@@ -126,7 +126,7 @@ $('document').ready(function() {
                 //$('#gifs-appear-here').on('click', function() {
                 alert("You've Clicked a Gif");
                 // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
-                var state = $(personImage).attr('data-state');
+                var state = $(this).attr('data-state');
                 console.log(state);
 
                 // If the clicked image's state is still, update its src attribute to what its data-animate value is.

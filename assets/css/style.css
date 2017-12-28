@@ -1,6 +1,24 @@
-.sidebar {
-    padding-bottom: 20px;
-    margin-bottom: 15px;
-    line-height: 22px;
-    border-bottom: 2px solid #eee;
-}
+    body {
+        /* Visual */
+        background: url('../images/basketball-floor.jpg');
+    }
+    
+    .jumbotron {
+        background-color: aquamarine;
+    }
+    
+    .jumbotron h1,
+    h3 {
+        font-size: 36px;
+        color: black;
+    }
+    
+    div,
+    form,
+    input {
+        margin: 10px;
+    }
+    
+    #add-player {
+        color: blue;
+    }
