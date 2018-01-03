@@ -1,6 +1,8 @@
     body {
         /* Visual */
         background: url('../images/basketball-floor.jpg');
+        margin: 0;
+        padding: 0;
     }
     
     .jumbotron {
@@ -17,6 +19,25 @@
     form,
     input {
         margin: 10px;
+    }
+    
+    #gifs-appear-here {
+        /* width: 100%; */
+        /* position: absolute; */
+        /* bottom: 20px; */
+        /* width: 100%; */
+        /* padding: 15px; */
+        /* margin-bottom: 0; */
+        /* font-weight: 300; */
+        /* line-height: 30px; */
+        /* color: #fff; */
+        /* text-align: center; */
+        /* background: #4aaaa5; */
+        /* border-bottom: 0; */
+        /* padding: 5px; */
+        /* margin-right: 20px; */
+        /* margin-left: 20px; */
+        /* margin-top: 20px; */
     }
     
     #add-player {

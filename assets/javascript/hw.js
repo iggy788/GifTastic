@@ -9,18 +9,21 @@ $('document').ready(function() {
         $('#players-view').empty();
 
         for (var i = 0; i < players.length; i++) {
-            var a = $('<button>');
-
-            a.addClass('player');
-
-            a.attr('data-name', players[i]);
-
-            a
+            var a = $('<button>')
+                .addClass('player')
+                .attr('data-name', players[i])
                 .text(i + 1 + '. ' + players[i])
-                .css('color', 'green')
-                .css('background-color', 'black')
-                .css('font-size', '25px');
-
+                .css({
+                    padding: '5px',
+                    'margin-right': '20px',
+                    'margin-left': '20px',
+                    'margin-top': '20px',
+                    width: '170px',
+                    border: 'none',
+                    color: 'gold',
+                    background: 'black',
+                    'font-size': '20px',
+                });
             $('#players-view').append(a);
         }
     }
@@ -66,19 +69,41 @@ $('document').ready(function() {
                 var results = response.data;
 
                 for (var i = 0; i < results.length; i++) {
-                    var gifDiv = $("<div class='item'>");
+
+                    var gifDiv = $("<div class='item' id='wrapper'>");
+                    gifDiv.css({
+                        width: 'auto',
+                        margin: '0px auto',
+                        background: 'black',
+                        padding: '10px',
+                        'text-align': 'center',
+                    });
 
                     var rating = results[i].rating;
 
                     var title = results[i].title;
 
-                    var p = $('<p>').text('GIF Title: ' + title + ' & Rating: ' + rating);
-                    p.css('font-size', '25px');
-
                     var personImage = $('<img>').addClass('gif');
                     personImage.attr('src', results[i].images.fixed_height_still.url);
                     personImage.attr('data-still', results[i].images.fixed_height_still.url);
                     personImage.attr('data-animate', results[i].images.fixed_height.url);
+                    personImage.css({
+                        padding: '5px',
+                        margin: '0px auto',
+                        width: '30%',
+                    });
+
+                    var p = $('<p>').text('GIF Title: ' + title + ' & Rating: ' + rating);
+                    p.css({
+                        padding: '5px',
+                        margin: '0px, auto',
+                        width: '100%',
+                        color: 'white',
+                        'font-size': '20px',
+                    });
+
+
+
 
                     gifDiv.prepend(p);
                     gifDiv.prepend(personImage);

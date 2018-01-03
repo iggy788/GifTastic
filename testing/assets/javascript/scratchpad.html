@@ -13,7 +13,30 @@
 
     <img src="https://media3.giphy.com/media/8erVmL2Ru4enm/200_s.gif" data-still="https://media3.giphy.com/media/8erVmL2Ru4enm/200_s.gif" data-animate="https://media3.giphy.com/media/8erVmL2Ru4enm/200.gif" data-state="still" class="gif">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        // START JAVASCRIPT
+        // ----------------------------------------------------------------------------------------------
+        $("document").ready(function() {
+
+            // CREATE A "DIV" ELEMENT AND DESIGN IT USING jQuery ".css()" CLASS.
+            var a = $('<button>').addClass('player').attr('data-name', players[i]).css({
+                width: '600 px',
+                margin: '0 auto',
+                /*centers the div horizontally in all browsers (except IE)*/
+                background: '#fff',
+                'text-align': 'left',
+                /*resets text alignment from body tag */
+                border: '1 px solid# ccc',
+                'border-top': 'none',
+                padding: '25 px',
+            }).text(i + 1 + '. ' + players[i]);
+            $('#players-view').append(a);
+        });
+    </script>
     <!-- Need to Add - data-state="still" -->
 </body>
+
+
 
 </html>
