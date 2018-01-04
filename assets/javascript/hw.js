@@ -1,5 +1,5 @@
 $('document').ready(function() {
-    var players = ['Michael Jordan', 'Ervin Magic Johnson', 'LeBron James', 'Larry Bird', 'Kobe Bryant', 'Kareem Abdul Jabbar', 'Wilt Chamberlain', 'Bill Russell', "Shaquille O'Neal", 'Oscar Robertson'];
+    var players = ['Michael Jordan', 'Ervin "Magic" Johnson', 'LeBron James', 'Larry Bird', 'Kobe Bryant', 'Kareem Abdul Jabbar', 'Wilt Chamberlain', 'Bill Russell', "Shaquille O'Neal", 'Oscar Robertson'];
 
     /* THE FUNCTION renderButtons(); WILL CREATE NEW BUTTONS FOR EVERY PLATER IN THE ABOVE ARRAY */
 
@@ -14,15 +14,22 @@ $('document').ready(function() {
                 .attr('data-name', players[i])
                 .text(i + 1 + '. ' + players[i])
                 .css({
-                    padding: '5px',
-                    'margin-right': '20px',
-                    'margin-left': '20px',
-                    'margin-top': '20px',
-                    width: '170px',
+                    //padding: '5px',
+                    //'margin-right': '20px',
+                    //'margin-left': '20px',
+                    //'margin-top': '10px',
+                    //'margin-bottom': '10px',
+                    width: '175px',
+                    height: '175px',
                     border: 'none',
-                    color: 'gold',
-                    background: 'black',
-                    'font-size': '20px',
+                    color: '#ffffff',
+                    background: "url('http://laoblogger.com/images/basket-clipart-free-4.jpg')",
+                    'background-size': '175px 175px',
+                    font: 'italic 25px "Fira Sans", serif',
+                    'border-radius': '100%',
+                    float: 'left',
+                    display: 'inline-block',
+                    margin: '20px',
                 });
             $('#players-view').append(a);
         }
@@ -74,8 +81,9 @@ $('document').ready(function() {
                     gifDiv.css({
                         width: 'auto',
                         margin: '0px auto',
-                        background: 'black',
-                        padding: '10px',
+                        background: "url('https://www.toptal.com/designers/subtlepatterns/patterns/sports.png')",
+                        'background-size': 'auto',
+                        padding: '5px',
                         'text-align': 'center',
                     });
 
@@ -98,7 +106,7 @@ $('document').ready(function() {
                         padding: '5px',
                         margin: '0px, auto',
                         width: '100%',
-                        color: 'white',
+                        color: '#333',
                         'font-size': '20px',
                     });
 
