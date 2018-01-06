@@ -72,13 +72,13 @@ $('document').ready(function() {
 
                     var gifDiv = $("<div class='item' id='wrapper'>");
                     gifDiv.css({
-                        width: 'auto',
+                        width: '25%',
                         float: 'left',
                         display: 'inline-block',
                         margin: '20px',
                         //background: "url('https://www.toptal.com/designers/subtlepatterns/patterns/sports.png')",
                         //'background-size': 'auto',
-                        padding: '5px',
+                        padding: '1px',
                         'text-align': 'center',
                     });
 
@@ -102,7 +102,7 @@ $('document').ready(function() {
                         margin: '0px, auto',
                         width: '100%',
                         color: '#333',
-                        'font-size': '20px',
+                        'font-size': '15px',
                     });
 
 
