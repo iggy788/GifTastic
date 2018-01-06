@@ -14,11 +14,6 @@ $('document').ready(function() {
                 .attr('data-name', players[i])
                 .text(i + 1 + '. ' + players[i])
                 .css({
-                    //padding: '5px',
-                    //'margin-right': '20px',
-                    //'margin-left': '20px',
-                    //'margin-top': '10px',
-                    //'margin-bottom': '10px',
                     width: '175px',
                     height: '175px',
                     border: 'none',
@@ -48,9 +43,7 @@ $('document').ready(function() {
         ) {
             event.preventDefault();
 
-            var player = $('#player-input')
-                .val()
-                .trim();
+            var player = $('#player-input').val().trim();
 
             players.push(player);
 
@@ -80,9 +73,11 @@ $('document').ready(function() {
                     var gifDiv = $("<div class='item' id='wrapper'>");
                     gifDiv.css({
                         width: 'auto',
-                        margin: '0px auto',
-                        background: "url('https://www.toptal.com/designers/subtlepatterns/patterns/sports.png')",
-                        'background-size': 'auto',
+                        float: 'left',
+                        display: 'inline-block',
+                        margin: '20px',
+                        //background: "url('https://www.toptal.com/designers/subtlepatterns/patterns/sports.png')",
+                        //'background-size': 'auto',
                         padding: '5px',
                         'text-align': 'center',
                     });
@@ -98,7 +93,7 @@ $('document').ready(function() {
                     personImage.css({
                         padding: '5px',
                         margin: '0px auto',
-                        width: '30%',
+                        width: '100%',
                     });
 
                     var p = $('<p>').text('GIF Title: ' + title + ' & Rating: ' + rating);

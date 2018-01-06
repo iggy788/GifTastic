@@ -20,6 +20,7 @@
     form,
     input {
         margin: 10px;
+        text-align: center;
     }
     
     .panel-default>.panel-heading {
